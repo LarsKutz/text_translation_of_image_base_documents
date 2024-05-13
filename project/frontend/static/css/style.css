@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Consolas&display=swap');
+
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    background-color: rgb(211, 211, 211);
+    font-family: 'Consolas', monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+    background-color: rgb(160, 160, 160);
+    font-size: 0.7em;
+    text-align: center;
+}
+
+main {
+    width: 100vw;
+    height: 100vh;
+}
+
+form {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.upload-container {
+    width: 40%;
+    padding: 20px;
+    border-right: 1px solid black;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+#label-input-file {
+    background-color: rgb(184, 184, 184);
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px;
+    border-style: dashed;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#upload-svg {
+    width: 50px;
+    height: 50px;
+}
+
+#label-input-file:hover {
+    background-color: rgb(195, 195, 195)
+}
+
+#input-file {
+    display: none;
+}
+
+.image-preview-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: baseline;
+    gap: 20px;
+}
+
+.image-preview-small {
+    width: 30%;
+    height: 100%;
+    object-fit: contain;
+    cursor: zoom-in;
+}
+
+label[for="image-preview"] {
+    align-self: center;
+    cursor: pointer;
+}
+
+.translation-container {
+    width: 60%;
+    padding: 20px;
+}
+
+.language-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.language-selection {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.zoom {
+    position: absolute;
+    width: 40%;
+    height: 100%;
+    object-fit: contain;
+    cursor: zoom-out;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#image-preview.zoom {
+    cursor: zoom-out;
+}
+
+
+
+@media screen and (max-width: 800px){
+    form {
+        flex-direction: column;
+    }
+
+    .upload-container {
+        width: calc(100% - 40px);
+        border-right: none;
+        border-bottom: 1px solid black;
+    }
+
+    .translation-container {
+        width: calc(100% - 40px);
+    }
+}
+
+@media screen and (max-height: 1200px) and (max-width: 800px){
+    .image-preview-small {
+        width: 15%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .zoom {
+        width: 80%;
+        height: 100%;
+    }
+}

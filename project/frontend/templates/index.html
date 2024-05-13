@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', path='/css/style.css') }}" rel="stylesheet">
+    <title>Projekt</title>
+</head>
+<body>
+    <header>
+        <h1>Document Translator</h1>
+    </header>
+    <main>
+        <form id="form" action="" method="post" enctype="multipart/form-data">
+            <div class="upload-container">
+                <label id="label-input-file" for="input-file"><b>Choose</b> <img id="upload-svg" src="{{ url_for('static', path='/images/upload.svg') }}"> <b>Image</b></label>
+                <input id="input-file" name="file" type="file" accept="image/*" onchange="onImageSelection(this)">
+                <div class="image-preview-container">
+                    <img id="image-preview" class="{% if img_base64 %} image-preview-small {% endif %}" src="{% if img_base64 %} data:{{ img_type }};base64,{{ img_base64 }} {% endif %}" onclick="toggleZoom()">
+                    <label id="image-preview-label" for="image-preview" onclick="toggleZoom()">
+                    {% if filename %}
+                        <span>{{ filename }}</span>
+                    {% endif %}
+                    </label>
+                </div>
+                <span><b>Extracted Text:</b></span>
+                {% if extracted_text %}
+                    <span>{{ extracted_text }}</span>
+                {% endif %}
+            </div>
+            <div class="translation-container">
+                <div class="language-header">
+                    <div class="language-selection">
+                        <div>
+                            <label id="label-language-selection-src" for="src_language">From:</label>
+                            <select id="src-language" name="src_language" onchange="checkLanguageSelection()">
+                                <option value="english" {{ "selected" if src_language == "english" else "" }} >English</option>
+                                <option value="french" {{ "selected" if src_language == "french" else "" }} >French</option>
+                                <option value="german" {{ "selected" if src_language == "german" else "" }} >German</option>
+                                <option value="spanish" {{ "selected" if src_language == "spanish" else "" }} >Spanish</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label id="label-language-selection-tgt" for="tgt-language">To:</label>
+                            <select id="tgt-language" name="tgt_language" onchange="checkLanguageSelection()">
+                                <option value="english" {{ "selected" if tgt_language == "english" else "" }} >English</option>
+                                <option value="french" {{ "selected" if tgt_language == "french" else "" }} >French</option>
+                                <option value="german" {{ "selected" if tgt_language == "german" else "" }} >German</option>
+                                <option value="spanish" {{ "selected" if src_language == "spanish" else "" }} >Spanish</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit">Translate</button>
+                </div>
+                <p><b>Translated Text:</b></p>
+                {% if translated_text %}
+                    <span>{{ translated_text }}</span>
+                {% endif %}
+                {% if error_message_translation %}
+                    <span style="color: red;">{{ error_message_translation }}</span>
+                {% endif %}
+            </div>
+        </form> 
+    </main>
+    <img id="zoomed-image" src="{% if img_base64 %} data:{{ img_type }};base64,{{ img_base64 }} {% endif %}" hidden onclick="toggleZoom()">
+
+    <script src="{{ url_for('static', path='/js/script.js') }}"></script>
+</body>
+</html>
