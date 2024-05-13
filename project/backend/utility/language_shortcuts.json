@@ -1,0 +1,18 @@
+{
+    "english": {
+        "tesseract": "eng",
+        "translation": "en"
+    },
+    "french": {
+        "tesseract": "fra",
+        "translation": "fr"
+    },
+    "german": {
+        "tesseract": "deu",
+        "translation": "de"
+    },
+    "spanish": {
+        "tesseract": "spa",
+        "translation": "es"
+    }
+}
