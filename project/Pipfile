@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pytesseract = "*"
+opencv-python = "*"
+matplotlib = "*"
+numpy = "*"
+pytest = "*"
+transformers = "*"
+sentencepiece = "*"
+sacremoses = "*"
+fastapi = "*"
+uvicorn = "*"
+jinja2 = "*"
+torch = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
