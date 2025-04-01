@@ -160,7 +160,5 @@ cython_debug/
 #.idea/
 
 # Additional files
-documentation/
-presentation/
-project/test/
-project/others/
+test/
+temp*
